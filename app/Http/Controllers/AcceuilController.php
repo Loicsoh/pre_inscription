@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Filiere;
 use App\Models\Specialite;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 
 use Illuminate\Http\Request;
@@ -52,9 +53,9 @@ class AcceuilController extends Controller
 
     public function dashboardSpecialite(): View
     {
-        // $articles = Article::where('author_id', Auth::id())->get();
         $specialite = Specialite::all();
-        return view('dashboard', ['specialite' => $specialite]);
+        $userCount = User::count(); 
+        return view('dashboard', compact('specialite', 'userCount'));
     }
 
     public function dashboardArticleSingle($id): View

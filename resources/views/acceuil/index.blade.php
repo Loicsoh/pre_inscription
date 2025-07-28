@@ -10,6 +10,5 @@
         <!-- <a href="#" class="bg-white text-bold text-2xl text-blue-500 px-4 py-2 rounded-md mt-4">Se connecter</a> -->
     </div>
 <div class="flex justify-center mt-8">
-    <a href="{{ route('Inscrip') }}" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition-colors">Pré-inscription</a>
 
 @endsection

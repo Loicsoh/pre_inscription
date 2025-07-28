@@ -19,8 +19,8 @@
             @foreach ($specialites as $specialite)
             <li class="border border-gray-300 p-2 my-2">
                     <img src="{{ asset('storage/' . $specialite->image) }}" alt="{{ $specialite->name }}" class="w-full object-cover h-auto mb-4">
-                    <h1>{{$specialite->name}}</h1>
-                    <p>{{$specialite->code}}</p>
+                    <h1 class="text-white text-xl font-bold">{{$specialite->name}}</h1>
+                    <p class="text-white ">{{$specialite->code}}</p>
                 <div class="flex items-center gap-2 w-full mt-6">
                         <a href="{{route('specialites.edit', $specialite->id)}}" class="text-white bg-yellow-500 hover:bg-yellow-600 px-4 py-1 rounded-md">modifier</a>
                     <form action="{{route('specialites.destroy', $specialite->id)}}" method="POST">
