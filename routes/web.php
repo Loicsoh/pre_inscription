@@ -1,22 +1,36 @@
 <?php
 
 use App\Http\Controllers\AcceuilController;
+use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpecialiteController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('welcome');
+// Page d'accueil
 Route::get('/', [AcceuilController::class, 'index'])->name('Index');
-Route::get('acceuil.home', [AcceuilController::class, 'home'])->name('Home');
-Route::get('/inscription', [InscriptionController::class, "index"])->name('Inscrip');
-Route::get('/create', [AcceuilController::class, 'create'])->name('Create');
 
+// Page Home
+Route::get('/acceuil/home', [AcceuilController::class, 'home'])->name('Home');
+
+// Page pré-inscription
+Route::get('/inscription', [InscriptionController::class, "index"])->name('Inscrip');
+
+// Page création filière (si besoin d'une page spéciale hors resource)
+Route::get('/create', [AcceuilController::class, 'create'])->name('filieres.create');
+
+// Routes resource pour filières (gère index, create, store, show, edit, update, destroy)
+Route::resource('filieres', FiliereController::class);
+
+// Routes resource pour spécialités
+Route::resource('specialites', SpecialiteController::class);
+
+// Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Profil utilisateur
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

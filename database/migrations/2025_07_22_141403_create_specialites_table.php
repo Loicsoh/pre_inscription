@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('filiere_id');
             $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('cascade');
             $table->string('niveau')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable()->change();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

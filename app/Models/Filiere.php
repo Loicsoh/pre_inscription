@@ -13,6 +13,7 @@ class Filiere extends Model
         'name',
         'code',
         'description',
+        'image',
     ];
     public function specialites()
     {

@@ -26,7 +26,7 @@
                     href="{{ url('/dashboard') }}"
                     class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border border-[#19140035] hover:border-[#1915014a] text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal transition"
                 >
-                    Dashboard
+                    Dashboardjjjjjjjjjj
                 </a>
                 <a href="{{ route('Index') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Accueil</a>
                 <a href="{{ route('Home') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Home</a>
