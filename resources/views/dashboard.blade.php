@@ -11,7 +11,8 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md" href="{{route('filieres.index')}}">filieres</a>
                     <a class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md" href="{{route('specialites.index')}}">specialites</a>
-                    <a class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md" href="{{route('userliste.user')}}">{{$userCount}}</a>
+                    <a class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md" href="{{route('userliste.user')}}">({{$userCount}}) Users</a>
+                    <a class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded-md" href="#">Pre_inscrit</a>
                 </div>
             </div>
         </div>
