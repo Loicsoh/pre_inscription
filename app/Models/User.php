@@ -46,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function civilStatut()
+    {
+        return $this->belongsTo(CivilStatut::class);
+    }
+
+    public function finance()
+    {
+        return $this->belongsToMany(Finance::class);
+    }
 }

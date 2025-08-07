@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CivilStatut;
+use App\Models\Finance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class InscriptionController extends Controller
+class FinaceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('inscription.finance');
     }
 
     /**
@@ -20,7 +21,7 @@ class InscriptionController extends Controller
      */
     public function create()
     {
-        
+        return view('inscription.finance');
     }
 
     /**
@@ -28,8 +29,22 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
-        
+        $validated = $request->validate([
+            'financial_type' => 'required',
+            'mode' => 'required',
+            'immigration' => 'required',
+        ]);
+
+        $validated['user_id'] = Auth::id();
+        $validated['immigration'] = $validated['immigration'] === 'Oui' ? 1 : 0;
+
+        try {
+            Finance::create($validated);
+            return redirect()->route('parcour.index')
+                   ->with('success', 'Données enregistrées avec succès!');
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['creation_error' => "Une erreur est survenue lors de l'enregistrement : " . $e->getMessage()]);
+        }
     }
 
     /**

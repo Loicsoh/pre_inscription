@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CivilStatut;
+use App\Models\Parcour;
 use Illuminate\Http\Request;
 
-class InscriptionController extends Controller
+class ParcourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('inscription.parcour');
     }
 
     /**
@@ -20,7 +20,7 @@ class InscriptionController extends Controller
      */
     public function create()
     {
-        
+        return view('inscription.parcour');
     }
 
     /**
@@ -28,8 +28,16 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
-        
+        $validated = $request->validate([
+            'premiere' => 'required',
+            'deuxieme' => 'required',
+            'troisieme' => 'required',
+            'quatrieme' => 'required',
+        ]);
+        $validated['user_id'] = auth()->user()->id;
+        Parcour::create($validated);
+        return redirect()->route('urgence.index')
+            ->with('success', 'Données enregistrées avec succès!');
     }
 
     /**

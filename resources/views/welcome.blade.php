@@ -30,14 +30,14 @@
                 </a>
                 <a href="{{ route('Index') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Accueil</a>
                 <a href="{{ route('Home') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Home</a>
-                <a href="{{ route('Inscrip') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Pré-inscription</a>
+                <a href="{{ route('civilstatut.index') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Pré-inscription</a>
                 <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Contact</a>
             @else
 
                 <div>
                     <a href="{{ route('Index') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Accueil</a>
                     <a href="{{ route('Home') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Home</a>
-                    <a href="{{ route('Inscrip') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Pré-inscription</a>
+                    <a href="{{ route('civilstatut.index') }}" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Pré-inscription</a>
                     <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Contact</a>
                 </div>
                 <div class="pl-[440px]">

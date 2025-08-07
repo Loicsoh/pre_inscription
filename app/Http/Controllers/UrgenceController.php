@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CivilStatut;
+use App\Models\Urgence;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
-class InscriptionController extends Controller
+class UrgenceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('inscription.urgence');
     }
 
     /**
@@ -20,7 +21,7 @@ class InscriptionController extends Controller
      */
     public function create()
     {
-        
+        return view('inscription.urgence');
     }
 
     /**
@@ -28,8 +29,15 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
-        
+        $validated = $request->validate([
+            'nom_urg' => 'required|string|max:255',
+            'tel_urg' => 'required|string|max:09',
+        ]);
+
+        $validated['user_id'] = auth()->user()->id;
+        Urgence::create($validated);
+        return redirect()->route('parcour.index')
+            ->with('success', 'Données enregistrées avec succès!');
     }
 
     /**
