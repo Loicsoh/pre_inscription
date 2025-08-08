@@ -8,17 +8,18 @@
 
     <form action="{{ route('civilstatut.store')}}" method="POST" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 max-w-2xl mx-auto transition-colors duration-300" id="civilstatutForm">
 
-    @if (session('success'))
-    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded shadow" role="alert">
-        <p>{{ session('success') }}</p>
-    </div>
-@endif
+        @if (session('success'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded shadow" role="alert">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
 
-@if (session('error'))
-    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow" role="alert">
-        <p>{{ session('error') }}</p>
-    </div>
-@endif
+        @if (session('error'))
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow" role="alert">
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
+        
          @csrf
          <div class="steps-wrapper mb-6">
             <div class="step" id="step1">

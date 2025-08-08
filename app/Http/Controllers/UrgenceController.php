@@ -35,8 +35,8 @@ class UrgenceController extends Controller
         ]);
 
         $validated['user_id'] = auth()->user()->id;
-        Urgence::create($validated);
-        return redirect()->route('parcour.index')
+        $urgence = Urgence::create($validated);
+        return redirect()->route('inscription.show',$urgence->id)
             ->with('success', 'Données enregistrées avec succès!');
     }
 

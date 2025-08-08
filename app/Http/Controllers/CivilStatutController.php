@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CivilStatut;
+use App\Models\User;
 
 class CivilStatutController extends Controller
 {
@@ -28,6 +29,8 @@ class CivilStatutController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // $user_id = $request->input('user_id');
 
     $validated = $request->validate([
             'nom' => 'required|string|max:255',
@@ -53,6 +56,8 @@ class CivilStatutController extends Controller
         return redirect()->back()
                ->with('error', 'Erreur lors de l\'enregistrement : ' . $e->getMessage());
         }
+
+        
     }
 
     /**
@@ -86,4 +91,6 @@ class CivilStatutController extends Controller
     {
         //
     }
+
+    
 }
