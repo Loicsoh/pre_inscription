@@ -15,6 +15,7 @@ class SpecialiteController extends Controller
     public function index()
     {
         $specialites = Specialite::paginate(3);
+        return view('user.listspecialite', compact('specialites'));
         return view('gestions.specialites.index-specialite', compact('specialites'));
     }
 

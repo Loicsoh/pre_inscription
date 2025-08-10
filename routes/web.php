@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AcceuilController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CivilStatutController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\FinaceController;
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 // Page d'accueil
 Route::get('/', [AcceuilController::class, 'index'])->name('Index');
 
+Route::get('user/listfiliere', [FiliereController::class, 'index'])->name('user.listfiliere');
+Route::get('user/listspecialite', [SpecialiteController::class, 'index'])->name('user.listspecialite');
+
 // Page Home
 Route::get('/acceuil/home', [AcceuilController::class, 'home'])->name('Home');
 
@@ -31,6 +35,10 @@ Route::get('/dashboard', function () {
     $userCount = User::count();
     return view('dashboard', compact('userCount'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
 
 // Routes protégées par le middleware personnalisé
 Route::middleware(['auth', 'web'])->group(function () {

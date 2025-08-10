@@ -13,6 +13,7 @@ class FiliereController extends Controller
     public function index()
     {
         $filieres = Filiere::paginate(3);
+        return view('user.listfiliere', compact('filieres'));
         return view('gestions.filieres.index-filiere', compact('filieres'));
     }
 

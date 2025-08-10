@@ -14,7 +14,6 @@
         <li class="text-white"><strong>Code :</strong> {{ $specialite->code }}</li>
         <li class="text-white"><strong>Filière :</strong> {{ $specialite->filiere->name ?? 'N/A' }}</li>
         <li class="text-white"><strong>Niveau :</strong> {{ $specialite->niveau }}</li>
-        <li class="text-white"><strong>Créé par :</strong> {{ $specialite->user->name ?? 'N/A' }}</li>
         <li class="text-white"><strong>Date de création :</strong> {{ $specialite->created_at->format('d/m/Y') }}</li>
         <li class="text-white"><strong>Dernière mise à jour :</strong> {{ $specialite->updated_at->format('d/m/Y') }}</li>
     </ul>
