@@ -7,7 +7,7 @@
 <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg px-6 py-8 mb-6">
 
     <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">
-        📄 Récapitulatif de votre inscription
+         votre fiche d'inscription
     </h1>
 
     <!-- Message de succès ou d'erreur -->
@@ -46,7 +46,9 @@
                 <strong>Pays :</strong> <span class="font-medium">{{ $civilstatut->pays }}</span>
             </div>
             <div>
-                <strong>Sexe :</strong> <span class="font-medium">{{ $civilstatut->sexe === 'M' ? 'Masculin' : 'Féminin' }}</span>
+                <!-- <strong>Sexe :</strong> <span class="font-medium">{{ $civilstatut->sexe === 'M' ? 'Masculin' : 'Féminin' }}</span> -->
+                <p>Masculin: <input type="checkbox" name="sexe"  value="$civilstatut->sexe == 'M'"></p>
+                <p>Feminin: <input type="checkbox" name="sexe" value="$civilstatut->sexe == 'F'"></p>
             </div>
             <div>
                 <strong>Nationalité :</strong> <span class="font-medium">{{ $civilstatut->nationalite }}</span>
@@ -56,15 +58,21 @@
             </div>
             <div>
                 <strong>Handicapé(e) :</strong> 
-                <span class="font-medium">{{ $civilstatut->handicape ? 'Oui' : 'Non' }}</span>
+                <!-- <span class="font-medium">{{ $civilstatut->handicape ? 'Oui' : 'Non' }}</span> -->
+                <p>Oui: <input type="checkbox" name="handicap"  value="$civilstatut->handicape == '1'"></p>
+                <p>Nom: <input type="checkbox" name="handicap" value="$civilstatut->handicape == '0'"></p>
+
             </div>
         </div>
     </section>
 
     <!-- Phase 2 : Niveau Scolaire -->
     <section class="mb-10 border-b border-gray-200 dark:border-gray-700 pb-6">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">🎓 Phase 2 : Niveau Scolaire</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Phase 2 : Niveau Scolaire</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+                <strong>Derniere Diplome :</strong> <span class="font-medium">{{ ($level->obtention) }}</span>
+            </div>
             <div>
                 <strong>Année d'obtention :</strong> <span class="font-medium">{{ \Carbon\Carbon::parse($level->obtention)->format('Y') }}</span>
             </div>
@@ -99,7 +107,7 @@
 
     <!-- Phase 3 : Financement -->
     <section class="mb-10 border-b border-gray-200 dark:border-gray-700 pb-6">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">💰 Phase 3 : Financement de la formation</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Phase 3 : Financement de la formation</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <strong>Prise en charge :</strong> <span class="font-medium">{{ ucfirst($financial->financial_type) }}</span>
@@ -109,14 +117,16 @@
             </div>
             <div class="md:col-span-2">
                 <strong>Pensée à l'étude à l'étranger :</strong> 
-                <span class="font-medium">{{ $financial->immigration ? 'Oui' : 'Non' }}</span>
+                <!-- <span class="font-medium">{{ $financial->immigration ? 'Oui' : 'Non' }}</span> -->
+                <p>Oui: <input type="checkbox" name="immi"  value="$financial->immigration == '1'"></p>
+                <p>Nom: <input type="checkbox" name="immi" value="$financial->immigration == '0'"></p>
             </div>
         </div>
     </section>
 
     <!-- Phase 4 : Parcours scolaire -->
     <section class="mb-10 border-b border-gray-200 dark:border-gray-700 pb-6">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">📚 Phase 4 : Cursus scolaire (4 dernières années)</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Phase 4 : Cursus scolaire (4 dernières années)</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <strong>2023-2024 :</strong> <span class="font-medium">{{ $parcour->premiere }}</span>
@@ -135,7 +145,7 @@
 
     <!-- Phase 5 : Urgence -->
     <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">📞 Phase 5 : Contact d'urgence</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Phase 5 : Contact d'urgence</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <strong>Nom et prénom :</strong> <span class="font-medium">{{ $urgence->nom_urg }}</span>
@@ -154,6 +164,9 @@
         <a href="" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition">
             Modifier
         </a>
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md transition">
+            Envoyer
+        </button>
         <button type="button" onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md transition">
             Imprimer
         </button>
