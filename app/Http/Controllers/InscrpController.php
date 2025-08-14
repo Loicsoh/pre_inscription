@@ -10,6 +10,9 @@ use App\Models\Parcour;
 use App\Models\Urgence;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use App\Models\User;
+use App\Notifications\InscriptionNotification;
 
 class InscrpController extends Controller
 {
@@ -53,13 +56,16 @@ class InscrpController extends Controller
 
         $specialites = Specialite::all();
 
-        return view('inscription.show-inscription', compact('civilstatut', 'financial', 'level', 'parcour', 'urgence'));
+        $inscription = $user;
+        return view('inscription.show-inscription', compact('civilstatut', 'financial', 'level', 'parcour', 'urgence', 'inscription'));
     }
 
 
 
     public function submit(Request $request)
     {
+        $user = Auth::user();
+        $user->update(['inscription_complete' => true]);
         // Valider toutes les données
         $validated = $request->validate([
             //civilstatut
@@ -132,7 +138,19 @@ class InscrpController extends Controller
         // Optionnel : marquer l'inscription comme terminée
         $user->update(['inscription_complete' => true]);
 
-        return redirect()->route('dashboard')->with('success', '✅ Inscription soumise avec succès !');
+         $admin = User::where('role', 'admin')->first();
+        if ($admin) {
+            $admin->notify(new InscriptionNotification($user));
+        }
+
+        return redirect()->route('inscription.show', ['id' => auth()->user()->id])->with('success', '✅ Inscription soumise avec succès !');
+
+        $admin = User::where('role', 'admin')->first();
+        if (!$admin) {
+            return redirect()->route('inscription.show', ['id' => auth()->user()->id])->with('error', 'Aucun administrateur trouvé pour la notification.');
+        }
+        
+        Notification::send($admin, new InscriptionNotification(auth()->user()));
     }
 
 

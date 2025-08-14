@@ -18,7 +18,7 @@
         </div>
             @endif
         @csrf
-            <div class="step hidden" id="step5">
+            <div id="step5">
                 <h2 class="text-2xl font-semibold mb-4">phase 5: Adresse a Contacter en Cas d'Urgence</h2>
                 <div class="mb-4">
                     <div>
@@ -30,8 +30,12 @@
                         <input type="text" id="tel_urg" name="tel_urg" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
                     </div>
                 </div>
-                    <button type="button" class="prev-step bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 mr-2">Précédent</button>
-                    <button type="submit" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Suivant</button>
+                <button type="button" 
+                    class="prev-step bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition"
+                    onclick="window.history.back()">
+                    Précédent
+                </button>
+                <button type="submit" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Suivant</button>
             </div>
     </form>            
 

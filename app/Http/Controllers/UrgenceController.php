@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Urgence;
+use App\Models\User;
+use App\Notifications\InscriptionNotification;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -28,17 +30,32 @@ class UrgenceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'nom_urg' => 'required|string|max:255',
-            'tel_urg' => 'required|string|max:09',
-        ]);
+{
+    $validated = $request->validate([
+        'nom_urg' => 'required|string|max:255',
+        'tel_urg' => 'required|string|max:20',
+    ]);
 
-        $validated['user_id'] = auth()->user()->id;
-        $urgence = Urgence::create($validated);
-        return redirect()->route('inscription.show',$urgence->id)
-            ->with('success', 'Données enregistrées avec succès!');
+    $validated['user_id'] = auth()->id();
+    $urgence = Urgence::create($validated);
+
+    // Mettre à jour le statut de l'utilisateur
+    auth()->user()->update(['statut' => 'en attente']);
+
+    // Envoyer la notification à l'admin
+    $admin = User::where('role', 'admin')->first();
+    if ($admin) {
+        $admin->notify(new InscriptionNotification(auth()->user()));
     }
+
+     try {
+            Urgence::create($validated);
+            return redirect()->route('inscription.show', ['id' => auth()->id()])
+                   ->with('success', 'phase 5 enregistrée avec succès!');
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['creation_error' => "Une erreur est survenue lors de l'enregistrement : " . $e->getMessage()]);
+        }
+}
 
     /**
      * Display the specified resource.

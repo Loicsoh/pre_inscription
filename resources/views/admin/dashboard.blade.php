@@ -1,4 +1,5 @@
 @extends('welcome')
+@php use App\Models\User; @endphp
 
 @section('title', 'admin')
 
@@ -34,6 +35,19 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
                 Spécialités
+            </a>
+
+
+            <a href="{{ route('admin.notifications') }}" class="flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                Notifications
+                @if(auth()->user()->unreadNotifications->count())
+                    <span class="absolute right-4 top-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        {{ auth()->user()->unreadNotifications->count() }}
+                    </span>
+                @endif
             </a>
         </nav>
     </aside>
@@ -120,6 +134,25 @@
                 </table>
             </div>
         </div>
+
+        <ul>
+             @foreach(auth()->user()->unreadNotifications as $notification)
+            <li class="p-3 bg-blue-50 rounded-lg">
+                <div class="flex justify-between">
+                    <span>{{ $notification->data['message'] }}</span>
+                    <a href="{{ $notification->data['link'] ?? '#' }}" class="text-blue-600 hover:underline">Voir</a>
+                </div>
+                <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
+            </li>
+    @endforeach
+        </ul>
+
+        
+        <ul>
+    @foreach(User::where('statut', 'en attente')->get() as $user)
+        <li>{{ $user->name }} - <a href="{{ route('admin.inscription.show', $user) }}">Vérifier</a></li>
+    @endforeach
+    </ul>
     </main>
 </div>
 @endsection

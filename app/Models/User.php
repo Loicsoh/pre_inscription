@@ -12,6 +12,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,8 +23,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Added role attribute
+        'role',
+        'statut',
     ];
+
+    public function getStatutAttribute($value)
+    {
+        return match ($value) {
+            'validé', 'payé' => $value,
+            default => 'en attente'
+        };
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,5 +68,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Finance::class);
     }
 
-    
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
 }

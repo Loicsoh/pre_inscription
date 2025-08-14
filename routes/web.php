@@ -5,6 +5,7 @@ use App\Http\Controllers\CivilStatutController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\FinaceController;
 use App\Http\Controllers\InscrpController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ParcourController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,7 @@ Route::get('/create', [AcceuilController::class, 'create'])->name('filieres.crea
 
 // Routes resource pour filières et spécialités (CRUD complet)
 Route::resource('filieres', FiliereController::class);
+
 Route::resource('specialites', SpecialiteController::class);
 
 // Dashboard public (protégé par auth et verified)
@@ -36,8 +38,19 @@ Route::get('/dashboard', function () {
     return view('dashboard', compact('userCount'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/paiement', function () {
+    return view('paiement');
+})->name('paiement');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/user/notifications', [UserController::class, 'notifications'])->name('user.notifications');
+});
+
+Route::middleware(['auth', 'role.admin'])->prefix('admin')->group(function () {
+    Route::get('/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
+    Route::post('/inscriptions/{user}/valider', [AdminController::class, 'valider'])->name('admin.inscription.valider');
+    Route::post('/inscriptions/{user}/payer', [AdminController::class, 'marquerPaye'])->name('admin.inscription.payer');
 });
 
 // Routes protégées par le middleware personnalisé
@@ -45,13 +58,17 @@ Route::middleware(['auth', 'web'])->group(function () {
     // Dashboard spécialité (si besoin d'une vue différente)
     Route::get('/dashboard-specialite', [AcceuilController::class, 'dashboardSpecialite'])->name('dashboard.specialite');
 
+    Route::get('/inscriptions/{user}', [AdminController::class, 'showInscription'])->name('admin.inscription.show');
+    Route::post('/inscriptions/{user}/payer', [AdminController::class, 'demanderPaiement'])->name('admin.inscription.payer');
+
     // Utilisateurs
     Route::get('/userliste', [UserController::class, 'index'])->name('userliste.user');
     Route::resource('users', UserController::class);
     Route::patch('/users/{id}/update-role', [UserController::class, 'update'])->name('users.updateRole');
 
     // Inscription (multi-étapes)
-    Route::resource('inscription', InscrpController::class);
+    Route::resource('inscription', InscrpController::class)->except(['update']);
+    Route::put('inscription/{inscription}', [InscrpController::class, 'update'])->name('inscription.update');
     Route::get('inscription/show/{id}', [InscrpController::class, 'show'])->name('inscription.show');
 
     // Profil utilisateur

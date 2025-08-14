@@ -41,7 +41,7 @@ class FinaceController extends Controller
         try {
             Finance::create($validated);
             return redirect()->route('parcour.index')
-                   ->with('success', 'Données enregistrées avec succès!');
+                   ->with('success', 'Phase 2 enregistrées avec succès!');
         } catch (\Exception $e) {
             return back()->withInput()->withErrors(['creation_error' => "Une erreur est survenue lors de l'enregistrement : " . $e->getMessage()]);
         }

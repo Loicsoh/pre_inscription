@@ -20,7 +20,7 @@
             </div>
             @endif
             @csrf
-             <div class="step hidden" id="step4">
+             <div id="step4">
                 <h2 class="text-2xl font-semibold mb-4">Phase 4 : Cursus scolaire des quatre dernières années</h2>
                 <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -41,7 +41,11 @@
                         <input type="text" name="quatrieme" value="" class="rounded-xl">
                     </div>
                 </div>
-                <button type="button" class="prev-step bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 mr-2">Précédent</button>
+                <button type="button" 
+                    class="prev-step bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition"
+                    onclick="window.history.back()">
+                    Précédent
+                </button>
                 <button type="submit" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Suivant</button>
             </div>
 

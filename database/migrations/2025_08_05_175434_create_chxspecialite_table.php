@@ -13,7 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('level', function (Blueprint $table) {
-            $table->renameColumn('specialite','chxspecialite');
+            if (Schema::hasColumn('level', 'specialite')) {
+                $table->renameColumn('specialite','chxspecialite');
+            }
         });
     }
 
@@ -22,8 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('level', function (Blueprint $table){
-            $table->renameColumn('chxspecialite', 'specialite');
+        Schema::table('level', function (Blueprint $table) {
+            if (Schema::hasColumn('level', 'chxspecialite')) {
+                $table->renameColumn('chxspecialite', 'specialite');
+            }
         });
     }
 };

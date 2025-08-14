@@ -23,7 +23,7 @@
 
     @csrf
 
-    <div class="step" id="step2">
+    <div id="step2">
         <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Phase 2 : Niveau Scolaire ou Diplôme Équivalent</h2>
 
         <!-- Année d'obtention -->

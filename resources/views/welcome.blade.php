@@ -27,8 +27,8 @@
     @if (Route::has('login'))
         <nav class="w-full flex items-center gap-6">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-gradient-to-r from-red-400 to-blue-400 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-white text-sm"></i>
+                <div class="w-12 h-5 bg-gradient-to-r from-red-400 to-blue-400 rounded-lg flex items-center justify-center">
+                    <img src="{{ asset('storage/images/logo.jpg') }}" alt="Logo">
                 </div>
                 <span class="text-lg font-bold text-red-700 dark:text-white">L'Esca</span>
             </div>
@@ -38,7 +38,7 @@
                     <i class="fas fa-home mr-1"></i> Accueil
                 </a>
                 <a href="{{ route('Home') }}" class="nav-link text-green-700 dark:text-red-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
-                    <i class="fas fa-chart-line mr-1"></i> Home
+                    <i class="fas fa-chart-line mr-1"></i> FiliereS/SpecialiteS
                 </a>
                 <a href="{{ route('civilstatut.index') }}" class="nav-link text-red-700 dark:text-red-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
                     <i class="fas fa-user-plus mr-1"></i> Pré-inscription

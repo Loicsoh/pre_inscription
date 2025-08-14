@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * Display user notifications
+     */
+    public function notifications()
+    {
+        return view('user.notifications');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
