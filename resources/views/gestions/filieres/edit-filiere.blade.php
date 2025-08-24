@@ -24,33 +24,33 @@
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-semibold mb-2">Nom</label>
                 <input id="name" name="name" type="text" value="{{ old('name', $filiere->name) }}"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" required>
+                       class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" required>
             </div>
 
             <div class="mb-4">
                 <label for="code" class="block text-gray-700 font-semibold mb-2">Code</label>
                 <input id="code" name="code" type="text" value="{{ old('code', $filiere->code) }}"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" required>
+                       class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" required>
             </div>
 
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
                 <textarea id="description" name="description" rows="4"
-                          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">{{ old('description', $filiere->description) }}</textarea>
+                          class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">{{ old('description', $filiere->description) }}</textarea>
             </div>
 
             <div class="mb-4">
                 <label for="image" class="block text-gray-700 font-semibold mb-2">Image</label>
                 <input type="file" name="image" id="image"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                       class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                 @if($filiere->image)
                     <img src="{{ asset('storage/' . $filiere->image) }}" alt="Image de la filière" class="mt-2 max-h-40">
                 @endif
             </div>
 
             <div class="flex justify-end space-x-4">
-                <a href="{{ route('filieres.index') }}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100">Annuler</a>
-                <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-800">Modifier</button>
+                <a href="{{ route('filieres.index') }}" class="px-4 bg-red-400 py-2 border border-gray-300 rounded hover:bg-red-500">Annuler</a>
+                <button type="submit" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-800">Modifier</button>
             </div>
         </form>
     </div>

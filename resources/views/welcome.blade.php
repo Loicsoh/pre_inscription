@@ -136,7 +136,7 @@
                 </div>
                 <p class="text-white mb-6 leading-relaxed">
                     L'excellence académique au service de votre réussite professionnelle. 
-                    Nous formons les leaders de demain depuis 2005.
+                    Nous formons les leaders de demain depuis 2022.
                 </p>
                 <div class="flex space-x-4">
                     <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center text-red-600 hover:text-red-700 transition-colors">

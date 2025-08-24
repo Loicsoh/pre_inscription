@@ -98,6 +98,28 @@
             </div>
         </div>
 
+        <!-- notification -->
+         <div class="flex items-center px-6 py-3 text-gray-700">
+            <!-- <ul>
+                @foreach(auth()->user()->unreadNotifications as $notification)
+                <li class="p-3 bg-blue-50 rounded-lg">
+                    <div class="flex justify-between">
+                        <span>{{ $notification->data['message'] }}</span>
+                        <a href="{{ $notification->data['link'] ?? '#' }}" class="text-blue-600 hover:underline">Voir</a>
+                    </div>
+                    <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
+                </li>
+                @endforeach
+            </ul> -->
+
+
+            <ul>
+                @foreach(User::where('statut', 'en attente')->get() as $user)
+                <li class="flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition">{{ $user->name }} - <a href="{{ route('admin.inscription.show', $user) }}">Vérifier</a></li>
+                @endforeach
+            </ul>
+         </div>
+
         <!-- Latest Registrations -->
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Dernières inscriptions</h3>
@@ -124,9 +146,9 @@
                                     {{ $item->created_at->format('d/m/Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                    <button type="submit" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                         Inscrit
-                                    </span>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -135,24 +157,7 @@
             </div>
         </div>
 
-        <ul>
-             @foreach(auth()->user()->unreadNotifications as $notification)
-            <li class="p-3 bg-blue-50 rounded-lg">
-                <div class="flex justify-between">
-                    <span>{{ $notification->data['message'] }}</span>
-                    <a href="{{ $notification->data['link'] ?? '#' }}" class="text-blue-600 hover:underline">Voir</a>
-                </div>
-                <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
-            </li>
-    @endforeach
-        </ul>
-
         
-        <ul>
-    @foreach(User::where('statut', 'en attente')->get() as $user)
-        <li>{{ $user->name }} - <a href="{{ route('admin.inscription.show', $user) }}">Vérifier</a></li>
-    @endforeach
-    </ul>
     </main>
 </div>
 @endsection

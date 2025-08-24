@@ -22,12 +22,12 @@
                 <h2 class="text-2xl font-semibold mb-4">phase 5: Adresse a Contacter en Cas d'Urgence</h2>
                 <div class="mb-4">
                     <div>
-                        <label for="nom_urg" class="block text-sm font-medium text-gray-700">Nom et Prenom</label>
-                        <input type="text" id="nom_urg" name="nom_urg" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <label for="nom_urg" class="block text-sm font-medium text-black-700">Nom et Prenom</label>
+                        <input type="text" id="nom_urg" name="nom_urg" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-600">
                     </div>
                     <div>
-                        <label for="tel_urg" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                        <input type="text" id="tel_urg" name="tel_urg" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <label for="tel_urg" class="block text-sm font-medium text-black-700">Téléphone</label>
+                        <input type="text" id="tel_urg" name="tel_urg" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-600">
                     </div>
                 </div>
                 <button type="button" 

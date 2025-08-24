@@ -25,20 +25,20 @@
                 <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="font-semibold">2023-2024</label>
-                        <input type="text" name="premiere" value="" class="rounded-xl">
+                        <input type="text" name="premiere" value="" class="rounded-xl bg-gray-600">
 
                     </div>
                     <div>
                         <label class="font-semibold">2022-2023</label>
-                        <input type="text" name="deuxieme" value="" class="rounded-xl">
+                        <input type="text" name="deuxieme" value="" class="rounded-xl bg-gray-600">
                     </div>
                     <div>
                         <label class="font-semibold">2021-2022</label>
-                        <input type="text" name="troisieme" value="" class="rounded-xl">
+                        <input type="text" name="troisieme" value="" class="rounded-xl bg-gray-600">
                     </div>
                     <div>
                         <label >2020-2021</label>
-                        <input type="text" name="quatrieme" value="" class="rounded-xl">
+                        <input type="text" name="quatrieme" value="" class="rounded-xl bg-gray-600">
                     </div>
                 </div>
                 <button type="button" 

@@ -36,25 +36,25 @@
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 font-semibold mb-2">Nom de la spécialité <span class="text-red-600">*</span></label>
                     <input id="name" name="name" type="text" value="{{ old('name', $specialite->name) }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                           class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                 </div>
 
                 <div class="mb-4">
                     <label for="code" class="block text-gray-700 font-semibold mb-2">Code <span class="text-red-600">*</span></label>
                     <input id="code" name="code" type="text" value="{{ old('code', $specialite->code) }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                           class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                 </div>
 
                 <div class="mb-4">
                     <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
                     <textarea id="description" name="description" rows="4"
-                              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">{{ old('description', $specialite->description) }}</textarea>
+                              class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">{{ old('description', $specialite->description) }}</textarea>
                 </div>
 
                 <div class="mb-4">
                 <label for="image" class="block text-gray-700 font-semibold mb-2">Image</label>
                 <input type="file" name="image" id="image"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                       class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                 @if($specialite->image)
                     <img src="{{ asset('storage/' . $specialite->image) }}" alt="Image de la specialite" class="mt-2 max-h-40">
                 @endif
@@ -63,7 +63,7 @@
                 <div class="mb-4">
                     <label for="specialite_id" class="block text-gray-700 font-semibold mb-2">Filière <span class="text-red-600">*</span></label>
                     <select id="filiere_id" name="filiere_id" required
-                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                            class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                         <option value="">-- Sélectionnez une filière --</option>
                         @foreach($filieres as $filiere)
                             <option value="{{ $filiere->id }}" {{ old('specialite_id') == $filiere->id ? 'selected' : '' }}>
@@ -76,14 +76,14 @@
                 <div class="mb-4">
                     <label for="niveau" class="block text-gray-700 font-semibold mb-2">Niveau</label>
                     <input id="niveau" name="niveau" type="text" value="{{ old('niveau', $specialite->niveau) }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Ex: Licence, Master...">
+                           class="w-full border border-blue-600 bg-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Ex: Licence, Master...">
                 </div>
 
                 
 
                 <div class="flex justify-end space-x-4">
-                    <a href="{{ route('specialites.index') }}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100">Annuler</a>
-                    <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-800">Modifier</button>
+                    <a href="{{ route('specialites.index') }}" class="px-4 py-2 border bg-red-400 bg-gray-600 rounded hover:bg-red-500">Annuler</a>
+                    <button type="submit" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-800">Modifier</button>
                 </div>
             </form>
         </div>
